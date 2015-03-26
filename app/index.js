@@ -19,7 +19,6 @@ var DynoGenerator = yeoman.generators.Base.extend({
     var done = this.async();
 
     this.log(yosay('I scaffold you the best web apps with Coffeescript, Jade, Browserify and Gulp.'));
-
     var prompts = [{
       type: 'input',
       name: 'projectName',
