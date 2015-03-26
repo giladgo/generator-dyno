@@ -18,7 +18,7 @@ var DynoGenerator = yeoman.generators.Base.extend({
   askFor: function () {
     var done = this.async();
 
-    this.log(yosay('I scaffold you the best web apps with Coffeescript, Jade, Browserify and Gulp.'));
+    this.log(this.yeoman);
     var prompts = [{
       type: 'input',
       name: 'projectName',
@@ -107,9 +107,6 @@ var DynoGenerator = yeoman.generators.Base.extend({
       this.copy('_bowerrc', '.bowerrc');
     }
     this.copy('gitignore', '.gitignore');
-  },
-
-  projectfiles: function () {
     this.copy('editorconfig', '.editorconfig');
   },
 
