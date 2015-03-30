@@ -80,16 +80,15 @@ Dyno.prototype.askForPrecompiler = function askForPrecompiler () {
       return opts.usePrecompiler
     }
   }], function (opts) {
-    this.args['precompiler'] = opts.precompiler;
-
+    this.opts['precompiler'] = opts.precompiler;
     done();
   }.bind(this));
 };
 
 Dyno.prototype.end = function end () {
   this.installDependencies({
-    bower: this.args['bower'],
-    skipInstall: this.option['skip-install'],
-    skipMessage: this.option['skip-message']
+    bower: this.opts['bower'],
+    skipInstall: this.options['skip-install'],
+    skipMessage: this.options['skip-message']
   });
 };
