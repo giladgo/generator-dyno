@@ -16,6 +16,13 @@ var Dyno = module.exports = function Dyno(args, opts) {
 // Let the dyno generator inherit from yeomans base generator
 util.inherits(Dyno, yeoman.generators.Base);
 
+Dyno.prototype.welcome = function welcome () {
+  if (!this.options['skip-message']) {
+    this.log(yosay(
+      'I am scaffolding number 1 web apps for you.'
+    ));
+  }
+};
 
 
     }
