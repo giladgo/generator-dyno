@@ -48,6 +48,11 @@ Dyno.prototype.askForProjectDetails = function askForProjectDetails () {
         return "Please use a semantic version number (http://semver.org/)"
       }
     }
+  }, {
+    type: 'confirm',
+    name: 'bower',
+    message: 'Do you want me to configure bower for your project?',
+    default: true
   }], function (opts) {
     this.opts = opts;
     done();
