@@ -74,11 +74,11 @@ Dyno.prototype.askForPrecompiler = function askForPrecompiler() {
 
   this.prompt([{
     type: 'confirm',
-    name: 'usePrecompiler',
+    name: 'compiler',
     message: 'Do you want to use a css precompiler in your project?'
   }, {
     type: 'list',
-    name: 'precompiler',
+    name: 'css',
     message: 'What precompiler do you want to use?',
     choices: [
       { name: 'Sass', value: 'sass' },
@@ -87,10 +87,10 @@ Dyno.prototype.askForPrecompiler = function askForPrecompiler() {
       { name: 'LESS', value: 'less' }
     ],
     when: function (opts) {
-      return opts.usePrecompiler
+      return opts.compiler
     }
   }], function (opts) {
-    this.opts['precompiler'] = opts.precompiler;
+    this.opts['css'] = opts.csscompiler;
     done();
   }.bind(this));
 };
