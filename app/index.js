@@ -7,7 +7,6 @@ var path = require('path');
 var mkdirp = require('mkdirp');
 var yosay = require('yosay');
 var semver = require('semver');
-var self;
 
 var DynoGenerator = yeoman.generators.Base.extend({
   init: function () {
