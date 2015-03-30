@@ -85,6 +85,12 @@ Dyno.prototype.askForPrecompiler = function askForPrecompiler () {
   }.bind(this));
 };
 
+Dyno.prototype.askForScripting = function askForScripting () {};
+
+Dyno.prototype.askForTemplating = function askForTemplating () {};
+
+Dyno.prototype.askForExtendedSettings = function askForExtendedSettings () {};
+
 Dyno.prototype.end = function end () {
   this.installDependencies({
     bower: this.opts['bower'],
