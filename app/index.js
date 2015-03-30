@@ -13,71 +13,9 @@ var Dyno = module.exports = function Dyno(args, opts) {
   this.opts = {};
 };
 
-  askFor: function () {
-    var done = this.async();
 // Let the dyno generator inherit from yeomans base generator
 util.inherits(Dyno, yeoman.generators.Base);
 
-    this.log(this.yeoman);
-    var prompts = [{
-      type: 'input',
-      name: 'projectName',
-      message: 'What\'s the name of the project?',
-      default: path.basename(process.cwd()),
-      filter: function (value) {
-        return self._.camelize(self._.slugify(self._.humanize(value)));
-      }
-    }, {
-      type: 'input',
-      name: 'projectVersion',
-      message: 'What\'s the version of the project?',
-      default: '0.0.1',
-      validate: function (value) {
-        if (value == semver.valid(value)) {
-          return true;
-        } else {
-          return "Please use a semantic version number (http://semver.org/)"
-        }
-      }
-    }, {
-      type: 'confirm',
-      name: 'coffeescriptOption',
-      message: 'Would you like to include Coffeescript?',
-      default: true
-    }, {
-      type: 'confirm',
-      name: 'bowerOption',
-      message: 'Would you like to include Bower for dependency management?',
-      default: true
-    }, {
-      type: 'list',
-      name: 'styleOption',
-      message: 'What css preprocessor do you want to use?',
-      choices: [
-        { name: 'Sass', value: 'sass' },
-        { name: 'SCSS', value: 'scss' }
-      ]
-    }, {
-      type: 'list',
-      name: 'templateOption',
-      message: 'What would you like to use for templating?',
-      choices: [
-        { name: 'Pure HTML', value: 'html' },
-        { name: 'Jade', value: 'jade' }
-      ]
-    }];
-
-    this.prompt(prompts, function (props) {
-      this.projectName = this._.str.camelize(props.projectName, true);
-      this.projectVersion = props.projectVersion;
-      this.coffeescriptOption = props.coffeescriptOption;
-      this.bowerOption = props.bowerOption;
-      this.templateOption = props.templateOption;
-      this.styleOption = props.styleOption;
-
-      done();
-    }.bind(this));
-  },
 
   app: function () {
     mkdirp('src');
