@@ -133,6 +133,11 @@ Dyno.prototype.askForTemplating = function askForTemplating() {
 Dyno.prototype.askForExtendedSettings = function askForExtendedSettings() {
   // Return nothing if defaults should be used
   if (this.opts['defaults']) return;
+  // TODO: Ask for the extended settings (deploy method, etc.)
+};
+
+Dyno.prototype._populateWithDefaults = function _popuplateWithDefaults() {
+  // TODO: Populate this.opts with the project defaults
 };
 
 Dyno.prototype.end = function end() {
