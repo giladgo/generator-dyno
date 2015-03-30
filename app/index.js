@@ -81,3 +81,10 @@ Dyno.prototype.askForPrecompiler = function askForPrecompiler () {
   }.bind(this));
 };
 
+Dyno.prototype.end = function end () {
+  this.installDependencies({
+    bower: this.args['bower'],
+    skipInstall: this.option['skip-install'],
+    skipMessage: this.option['skip-message']
+  });
+};
