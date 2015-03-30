@@ -17,43 +17,11 @@ var Dyno = module.exports = function Dyno(args, opts) {
 util.inherits(Dyno, yeoman.generators.Base);
 
 
-  app: function () {
-    mkdirp('src');
-    mkdirp('src/scripts');
 
-    if (!this.coffeescriptOption) {
-      this.template('_main.js', 'src/scripts/main.js');
-      this.template('_example.js', 'src/scripts/example.js');
-    } else {
-      this.template('_main.coffee', 'src/scripts/main.coffee');
-      this.template('_example.coffee', 'src/scripts/example.coffee');
     }
 
-    this.template('_index.'+this.templateOption, 'src/index.'+this.templateOption);
-    this.copy('_gulpfile.js', 'gulpfile.js');
+Dyno.prototype.askForPrecompiler = function askForPrecompiler () {
 
-    mkdirp('src/images');
-    this.copy('dyno-logo.png', 'src/images/dyno-logo.png');
-
-    mkdirp('src/stylesheets');
-    this.template('_main.'+this.styleOption, 'src/stylesheets/main.'+this.styleOption);
-
-    this.template('_package.json', 'package.json');
-
-    if(this.bowerOption) {
-      this.template('_bower.json', 'bower.json');
-      this.copy('_bowerrc', '.bowerrc');
     }
-    this.copy('gitignore', '.gitignore');
-    this.copy('editorconfig', '.editorconfig');
-  },
-
-  end: function () {
-    this.installDependencies({
-      bower: this.bowerOption,
-      skipInstall: this.options['skip-install']
-    });
-  }
 };
 
-module.exports = DynoGenerator;
