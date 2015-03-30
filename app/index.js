@@ -57,7 +57,10 @@ Dyno.prototype.askForProjectDetails = function askForProjectDetails () {
     type: 'confirm',
     name: 'bower',
     message: 'Do you want me to configure bower for your project?',
-    default: true
+    default: true,
+    when: function (opts) {
+      return !opts.defaults
+    }
   }], function (opts) {
     this.opts = opts;
     done();
