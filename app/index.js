@@ -8,14 +8,15 @@ var mkdirp = require('mkdirp');
 var yosay = require('yosay');
 var semver = require('semver');
 
-var DynoGenerator = yeoman.generators.Base.extend({
-  init: function () {
-    self = this;
-    this.pkg = require('../package.json');
-  },
+var Dyno = module.exports = function Dyno(args, opts) {
+  yeoman.generators.Base.apply(this, arguments);
+  this.opts = {};
+};
 
   askFor: function () {
     var done = this.async();
+// Let the dyno generator inherit from yeomans base generator
+util.inherits(Dyno, yeoman.generators.Base);
 
     this.log(this.yeoman);
     var prompts = [{
@@ -115,6 +116,6 @@ var DynoGenerator = yeoman.generators.Base.extend({
       skipInstall: this.options['skip-install']
     });
   }
-});
+};
 
 module.exports = DynoGenerator;
