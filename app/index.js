@@ -68,6 +68,8 @@ Dyno.prototype.askForProjectDetails = function askForProjectDetails () {
 }
 
 Dyno.prototype.askForPrecompiler = function askForPrecompiler () {
+  // Return nothing if defaults should be used
+  if (this.opts['defaults']) return;
   var done = this.async();
 
   this.prompt([{
@@ -93,11 +95,20 @@ Dyno.prototype.askForPrecompiler = function askForPrecompiler () {
   }.bind(this));
 };
 
-Dyno.prototype.askForScripting = function askForScripting () {};
+Dyno.prototype.askForScripting = function askForScripting () {
+  // Return nothing if defaults should be used
+  if (this.opts['defaults']) return;
+};
+Dyno.prototype.askForTemplating = function askForTemplating () {
+  // Return nothing if defaults should be used
+  if (this.opts['defaults']) return;
 
-Dyno.prototype.askForTemplating = function askForTemplating () {};
+};
 
-Dyno.prototype.askForExtendedSettings = function askForExtendedSettings () {};
+Dyno.prototype.askForExtendedSettings = function askForExtendedSettings() {
+  // Return nothing if defaults should be used
+  if (this.opts['defaults']) return;
+};
 
 Dyno.prototype.end = function end () {
   this.installDependencies({
