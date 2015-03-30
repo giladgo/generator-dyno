@@ -50,6 +50,11 @@ Dyno.prototype.askForProjectDetails = function askForProjectDetails () {
     }
   }, {
     type: 'confirm',
+    name: 'defaults',
+    message: 'Do you want me to use the default options for Dyno as stated on the GitHub page?',
+    default: false
+  }, {
+    type: 'confirm',
     name: 'bower',
     message: 'Do you want me to configure bower for your project?',
     default: true
