@@ -118,7 +118,16 @@ Dyno.prototype.askForScripting = function askForScripting() {
 Dyno.prototype.askForTemplating = function askForTemplating() {
   // Return nothing if defaults should be used
   if (this.opts['defaults']) return;
+  var done = this.async();
 
+  this.prompt([{
+    type: 'confirm',
+    name: 'jade',
+    message: 'Do you want to use Jade in your project?'
+  }], function (opts) {
+    this.opts['html'] = (opts.jade) 'jade' : 'html';
+    done();
+  }.bind(this));
 };
 
 Dyno.prototype.askForExtendedSettings = function askForExtendedSettings() {
