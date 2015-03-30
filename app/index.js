@@ -16,7 +16,7 @@ var Dyno = module.exports = function Dyno(args, opts) {
 // Let the dyno generator inherit from yeomans base generator
 util.inherits(Dyno, yeoman.generators.Base);
 
-Dyno.prototype.welcome = function welcome () {
+Dyno.prototype.welcome = function welcome() {
   if (!this.options['skip-message']) {
     this.log(yosay(
       'I am scaffolding number 1 web apps for you.'
@@ -24,7 +24,7 @@ Dyno.prototype.welcome = function welcome () {
   }
 };
 
-Dyno.prototype.askForProjectDetails = function askForProjectDetails () {
+Dyno.prototype.askForProjectDetails = function askForProjectDetails() {
   var done = this.async();
   var _ = this._;
 
@@ -67,7 +67,7 @@ Dyno.prototype.askForProjectDetails = function askForProjectDetails () {
   }.bind(this))
 }
 
-Dyno.prototype.askForPrecompiler = function askForPrecompiler () {
+Dyno.prototype.askForPrecompiler = function askForPrecompiler() {
   // Return nothing if defaults should be used
   if (this.opts['defaults']) return;
   var done = this.async();
@@ -95,11 +95,12 @@ Dyno.prototype.askForPrecompiler = function askForPrecompiler () {
   }.bind(this));
 };
 
-Dyno.prototype.askForScripting = function askForScripting () {
+Dyno.prototype.askForScripting = function askForScripting() {
   // Return nothing if defaults should be used
   if (this.opts['defaults']) return;
 };
-Dyno.prototype.askForTemplating = function askForTemplating () {
+
+Dyno.prototype.askForTemplating = function askForTemplating() {
   // Return nothing if defaults should be used
   if (this.opts['defaults']) return;
 
@@ -110,7 +111,7 @@ Dyno.prototype.askForExtendedSettings = function askForExtendedSettings() {
   if (this.opts['defaults']) return;
 };
 
-Dyno.prototype.end = function end () {
+Dyno.prototype.end = function end() {
   this.installDependencies({
     bower: this.opts['bower'],
     skipInstall: this.options['skip-install'],
