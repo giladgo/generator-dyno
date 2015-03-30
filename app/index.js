@@ -98,6 +98,21 @@ Dyno.prototype.askForPrecompiler = function askForPrecompiler() {
 Dyno.prototype.askForScripting = function askForScripting() {
   // Return nothing if defaults should be used
   if (this.opts['defaults']) return;
+  var done = this.async();
+
+  this.prompt([{
+    type: 'confirm',
+    name: 'coffee',
+    message: 'Do you want to use CoffeeScript in your project?'
+  }, {
+    type: 'confirm',
+    name: 'browserify',
+    message: 'Do you want to use Browserify in your project?'
+  }], function (opts) {
+    this.opts['js'] = (opts.coffee) ? 'coffee' : 'js';
+    this.opts['browserify'] = opts.browserify;
+    done();
+  }.bind(this));
 };
 
 Dyno.prototype.askForTemplating = function askForTemplating() {
